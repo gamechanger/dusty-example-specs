@@ -1,0 +1,2 @@
+image: mongo:2.6.9
+entrypoint: ["sh", "-c", "rm -f /data/db/mongod.lock; mongod --nojournal --noprealloc --smallfiles"]

@@ -1,0 +1,6 @@
+# Services are defined through vanilla Composefiles. No
+# Dusty-specific logic here.
+image: mongo:3.0.4
+command: mongod --nojournal --noprealloc --smallfiles
+volumes:
+    - /persist/persistentMongo:/data/db
