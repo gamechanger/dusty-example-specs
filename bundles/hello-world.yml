@@ -1,4 +1,4 @@
 description: Hello world! Two running copies of a simple Flask app.
 apps:
-  - flask-one
-  - flask-two
+  - flaskone
+  - flasktwo
