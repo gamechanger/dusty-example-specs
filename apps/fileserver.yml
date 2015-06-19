@@ -1,0 +1,19 @@
+# We don't actually need these for this example
+# since we're running a built-in Python command.
+# These may become optional in a future version.
+repo: github.com/gamechanger/dusty-flask-example
+mount: /dusty-flask-example
+
+image: python:2.7.10
+
+host_forwarding:
+  - host_name: local.fileserver.com
+    host_port: 80
+    container_port: 80
+
+commands:
+  always:
+    - mkdir -p /fileserver
+    - cd /fileserver
+    - echo 'Hello world!' > hello-world.txt
+    - python -m SimpleHTTPServer 80
