@@ -1,0 +1,24 @@
+repo: github.com/gamechanger/dusty-flask-example
+mount: /dusty-flask-example
+
+image: python:2.7.10
+
+depends:
+  services:
+    - persistentMongo
+
+host_forwarding:
+  - host_name: local.flasktwo.com
+    host_port: 80
+    container_port: 5000
+
+commands:
+  once:
+    - pip install -r requirements.txt
+  always:
+    - python app.py
+
+compose:
+  environment:
+    APP_NAME: Flask Two
+    MONGO_HOST: persistentMongo

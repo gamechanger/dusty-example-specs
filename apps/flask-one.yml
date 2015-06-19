@@ -8,7 +8,7 @@ depends:
     - persistentMongo
 
 host_forwarding:
-  - host_name: local.alpha.com
+  - host_name: local.flaskone.com
     host_port: 80
     container_port: 5000
 
@@ -20,5 +20,5 @@ commands:
 
 compose:
   environment:
-    APP_NAME: alpha
+    APP_NAME: Flask One
     MONGO_HOST: persistentMongo
