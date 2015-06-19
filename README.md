@@ -1,2 +1,2 @@
-# example-dusty-specs
+# dusty-example-specs
 Example specs for Dusty
