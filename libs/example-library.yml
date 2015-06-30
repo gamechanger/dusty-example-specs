@@ -1,0 +1,13 @@
+repo: github.com/gamechanger/dusty-example-library
+mount: /dusty-example-library
+
+image: python:2.7.10
+
+test:
+    image: python:2.7.10
+    once:
+      - python setup.py install
+    suites:
+      - name: unit
+        command:
+          - python setup.py test
