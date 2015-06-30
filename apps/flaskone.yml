@@ -32,3 +32,9 @@ test:
       command:
         - python app_test.py
       description: Run unit tests in their own container
+    - name: mongo_test
+      command:
+        - python mongo_test.py
+      services:
+        - testMongo
+      description: run a test against a mongo instance
