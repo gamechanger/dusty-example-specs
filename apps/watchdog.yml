@@ -6,10 +6,10 @@ depends:
 
 commands:
     always:
-      - watchmedo shell-command --patterns="*.txt" --recursive --command='echo "${watch_event_type} ${watch_src_path}"' .
+      - watchmedo shell-command --patterns="*.txt" --command='echo "${watch_event_type} ${watch_src_path}"' .
 
 scripts:
-    - name: example_create
+    - name: example_events
       description: Example script which will produce filesystem events seen by watchmedo
       command:
         - touch example.txt
