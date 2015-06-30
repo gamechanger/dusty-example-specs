@@ -1,0 +1,5 @@
+repo: github.com/gorakhargosh/watchdog
+mount: /watchdog
+
+install:
+  - python setup.py install
