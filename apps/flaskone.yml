@@ -37,4 +37,4 @@ test:
         - python mongo_test.py
       services:
         - testMongo
-      description: run a test of a mongo instance
+      description: run a test against a mongo instance
