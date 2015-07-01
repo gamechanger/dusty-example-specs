@@ -1,4 +1,4 @@
-repo: github.com/gorakhargosh/watchdog
+repo: github.com/gamechanger/watchdog
 mount: /watchdog
 
 install:
