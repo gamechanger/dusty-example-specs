@@ -1,0 +1,5 @@
+repo: github.com/gamechanger/watchdog
+mount: /watchdog
+
+install:
+  - python setup.py install

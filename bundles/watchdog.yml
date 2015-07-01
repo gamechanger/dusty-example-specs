@@ -1,0 +1,3 @@
+description: Launches an example watchdog app, demonstrating libs and scripts
+apps:
+  - watchdog
