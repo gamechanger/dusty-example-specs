@@ -1,0 +1,21 @@
+image: ipython/notebook
+
+host_forwarding:
+  - host_name: local.ipython.com
+    host_port: 80
+    container_port: 8888
+
+commands:
+  always:
+    - /notebook.sh
+
+compose:
+  environment:
+    USE_HTTP: 1
+    PASSWORD: dusty
+  # We can persist the data we create in the Notebook by mounting
+  # a Docker volume inside the /persist directory of the boot2docker
+  # VM. This will survive boot2docker restarts. The /root directory
+  # inside the container is the working dir for the Notebook.
+  volumes:
+    - /persist/ipythonNotebookExample:/root
