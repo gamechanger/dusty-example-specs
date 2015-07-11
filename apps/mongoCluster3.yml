@@ -5,4 +5,4 @@ commands:
     - mongod --replSet dusty --port 27020 --smallfiles --oplogSize 128
 
 compose:
-  net: container:mongoCluster2
+  net: container:mongoCluster1
