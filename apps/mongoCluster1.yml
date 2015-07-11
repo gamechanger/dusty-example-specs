@@ -1,0 +1,20 @@
+image: mongo:3.0.4
+
+commands:
+  always:
+    - mongod --replSet dusty --port 27018 --smallfiles --oplogSize 128
+
+scripts:
+  - name: initialize
+    description: Initialize the Mongo cluster for the first time
+    command:
+      - |
+        mongo --port 27018 --eval "printjson(rs.initiate({_id: 'dusty', members: [{_id: 0, host: 'localhost:27018'}]}));"
+      - mongo --port 27018 --eval "printjson(rs.add('localhost:27019'));"
+      - mongo --port 27018 --eval "printjson(rs.add('localhost:27020'));"
+      - echo "Cluster should be configured, printing rs.status()"
+      - mongo --port 27018 --eval "printjson(rs.status());"
+  - name: shell
+    description: Connect a mongo shell to the primary
+    command:
+      - mongo --port 27018

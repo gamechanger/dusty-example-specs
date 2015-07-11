@@ -1,0 +1,5 @@
+description: Run a Mongo replica set by using container network daisy-chaining
+apps:
+  - mongoCluster1
+  - mongoCluster2
+  - mongoCluster3
