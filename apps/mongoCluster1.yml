@@ -1,0 +1,5 @@
+image: mongo:3.0.4
+
+commands:
+  always:
+    - mongod --replSet dusty --port 27018 --smallfiles --oplogSize 128

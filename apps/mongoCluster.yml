@@ -1,0 +1,31 @@
+# This app provides an entrypoint into the set of mongoCluster
+# node containers. This allows us to provide a single reference
+# that ends up depending on all of the component containers so
+# that Dusty knows to run them.
+
+image: mongo:3.0.4
+
+depends:
+  apps:
+    - mongoCluster1
+    - mongoCluster2
+    - mongoCluster3
+
+commands:
+  always:
+    - sleep infinity
+
+scripts:
+  - name: initialize
+    description: Initialize the Mongo cluster for the first time
+    command:
+      - |
+        mongo --host mongoCluster1 --port 27018 --eval "printjson(rs.initiate({_id: 'dusty', members: [{_id: 0, host: 'localhost:27018'}]}));"
+      - mongo --host mongoCluster1 --port 27018 --eval "printjson(rs.add('localhost:27019'));"
+      - mongo --host mongoCluster1 --port 27018 --eval "printjson(rs.add('localhost:27020'));"
+      - echo "Cluster should be configured, printing rs.status()"
+      - mongo --host mongoCluster1 --port 27018 --eval "printjson(rs.status());"
+  - name: shell
+    description: Connect a mongo shell to the primary
+    command:
+      - mongo --host mongoCluster1 --port 27018
