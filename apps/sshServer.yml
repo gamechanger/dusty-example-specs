@@ -1,0 +1,29 @@
+# This spec shows how to create a running SSH server in a container
+# which is accessible from the Mac via host forwarding.
+# To connect from your Mac, you can run
+# ssh -p 222 -i /path/to/private/key root@local.ssh.com
+
+image: phusion/baseimage:0.9.17
+
+host_forwarding:
+  - host_name: local.ssh.com
+    host_port: 222
+    container_port: 22
+    type: stream
+
+assets:
+  - name: SSH_PUBLIC_KEY
+    path: /etc/ssh_public_key
+
+commands:
+  # You will need this if your base image doesn't come with SSH server installed
+  # once:
+    # - apt-get update && apt-get install -y openssh-server
+  always:
+    - mkdir -p /root/.ssh
+    - mkdir -p /etc/ssh
+    - cp /etc/ssh_public_key /root/.ssh/authorized_keys
+    - chmod 600 /root/.ssh/authorized_keys
+    - cd /etc/ssh
+    - ssh-keygen -t rsa -b 4096 -f ssh_host_rsa_key
+    - /usr/sbin/sshd -D

@@ -1,0 +1,3 @@
+description: Run an SSH server which can be reached from your Mac
+apps:
+  - sshServer
