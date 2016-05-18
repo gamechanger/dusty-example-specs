@@ -1,4 +1,4 @@
-# This app provides an entrypoint into the set of mongoCluster
+# This app provides an entrypoint into the set of mongo_cluster
 # node containers. This allows us to provide a single reference
 # that ends up depending on all of the component containers so
 # that Dusty knows to run them.
@@ -7,9 +7,9 @@ image: mongo:3.0.4
 
 depends:
   apps:
-    - mongoCluster1
-    - mongoCluster2
-    - mongoCluster3
+    - mongo_cluster1
+    - mongo_cluster2
+    - mongo_cluster3
 
 commands:
   always:
@@ -20,12 +20,12 @@ scripts:
     description: Initialize the Mongo cluster for the first time
     command:
       - |
-        mongo --host mongoCluster1 --port 27018 --eval "printjson(rs.initiate({_id: 'dusty', members: [{_id: 0, host: 'localhost:27018'}]}));"
-      - mongo --host mongoCluster1 --port 27018 --eval "printjson(rs.add('localhost:27019'));"
-      - mongo --host mongoCluster1 --port 27018 --eval "printjson(rs.add('localhost:27020'));"
+        mongo --host mongo_cluster1 --port 27018 --eval "printjson(rs.initiate({_id: 'dusty', members: [{_id: 0, host: 'localhost:27018'}]}));"
+      - mongo --host mongo_cluster1 --port 27018 --eval "printjson(rs.add('localhost:27019'));"
+      - mongo --host mongo_cluster1 --port 27018 --eval "printjson(rs.add('localhost:27020'));"
       - echo "Cluster should be configured, printing rs.status()"
-      - mongo --host mongoCluster1 --port 27018 --eval "printjson(rs.status());"
+      - mongo --host mongo_cluster1 --port 27018 --eval "printjson(rs.status());"
   - name: shell
     description: Connect a mongo shell to the primary
     command:
-      - mongo --host mongoCluster1 --port 27018
+      - mongo --host mongo_cluster1 --port 27018

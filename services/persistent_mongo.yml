@@ -3,4 +3,4 @@
 image: mongo:3.0.4
 entrypoint: ["sh", "-c", "rm -f /data/db/mongod.lock; mongod --nojournal --noprealloc --smallfiles"]
 volumes:
-    - /persist/persistentMongo:/data/db
+    - /persist/persistent_mongo:/data/db
