@@ -5,7 +5,7 @@ image: python:2.7.10
 
 depends:
   services:
-    - persistentMongo
+    - persistent_mongo
 
 host_forwarding:
   - host_name: local.flasktwo.com
@@ -21,4 +21,4 @@ commands:
 compose:
   environment:
     APP_NAME: Flask Two
-    MONGO_HOST: persistentMongo
+    MONGO_HOST: persistent_mongo

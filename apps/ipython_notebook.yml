@@ -18,4 +18,4 @@ compose:
   # VM. This will survive boot2docker restarts. The /root directory
   # inside the container is the working dir for the Notebook.
   volumes:
-    - /persist/ipythonNotebookExample:/root
+    - /persist/ipython_notebookExample:/root

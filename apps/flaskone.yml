@@ -5,7 +5,7 @@ image: python:2.7.10
 
 depends:
   services:
-    - persistentMongo
+    - persistent_mongo
 
 host_forwarding:
   - host_name: local.flaskone.com
@@ -21,7 +21,7 @@ commands:
 compose:
   environment:
     APP_NAME: Flask One
-    MONGO_HOST: persistentMongo
+    MONGO_HOST: persistent_mongo
 
 test:
   image: python:2.7.10
@@ -36,5 +36,5 @@ test:
       command:
         - python mongo_test.py
       services:
-        - testMongo
+        - test_mongo
       description: run a test against a mongo instance
